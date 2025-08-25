@@ -1,0 +1,19 @@
+# Raw data
+data/fastq/*.fastq
+data/fastq/*.fastq.gz
+
+# Results
+results/fastqc/*
+results/multiqc/*
+results/*
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Conda / Python cache
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
