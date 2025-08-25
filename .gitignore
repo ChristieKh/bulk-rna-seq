@@ -19,3 +19,5 @@ __pycache__/
 .DS_Store
 data/fastq/*
 *.sra
+data/fastq/*
+*.sra
