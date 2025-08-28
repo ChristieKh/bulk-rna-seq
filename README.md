@@ -16,7 +16,7 @@ Each step is implemented as a standalone script in `scripts/`, making the workfl
    Run FastQC on raw FASTQ files and summarize results with MultiQC.
 
 3. **Trimming** – [`scripts/02_trim.sh`](scripts/02_trim.sh)   
-   Remove adapters and low-quality bases using `cutadapt` or `fastp`.  
+   Remove adapters and low-quality bases using `cutadapt`. Re-run step "Quality control" again after trimming.
 
 4. **Alignment** – `scripts/03_align.sh`  
    Map reads to a reference genome (STAR or HISAT2).  
