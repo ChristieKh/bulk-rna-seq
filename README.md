@@ -15,7 +15,7 @@ Each step is implemented as a standalone script in `scripts/`, making the workfl
 2. **Quality control** – [`scripts/01_qc.sh`](scripts/01_qc.sh)  
    Run FastQC on raw FASTQ files and summarize results with MultiQC.
 
-3. **Trimming** – `scripts/02_trim.sh`  
+3. **Trimming** – [`scripts/02_trim.sh`](scripts/02_trim.sh)   
    Remove adapters and low-quality bases using `cutadapt` or `fastp`.  
 
 4. **Alignment** – `scripts/03_align.sh`  
