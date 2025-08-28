@@ -1,4 +1,4 @@
-# 🧬 Bulk RNA-seq Analysis Pipeline
+# 🧬 Bulk RNA-seq Analysis 
 
 This repository demonstrates a **complete bulk RNA-seq workflow** on public test data (SRA).  
 It is designed as a showcase project for interview preparation and portfolio building.  
@@ -61,11 +61,12 @@ Each step is implemented as a standalone script in `scripts/`, making the workfl
 
 ---
 
-## 🖼 MultiQC summary
+## ✂️ Trimming results
 
-**Per base sequence quality:**  
-![QC examples](results/multiqc)
+Performed with **cutadapt**.  
 
-*(Mean Quality score + Adapter Content)*
+- **Adapter content** → removed (was ~2–3%, now <2.5%)  
+- **Overrepresented sequences** → gone  
+- ✅ Data is clean and ready for alignment 
 
 ---
