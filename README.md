@@ -31,8 +31,8 @@ Each step is implemented as a standalone script in `scripts/`, making the workfl
    Convert SAM to BAM, sort, and index with samtools.  
    Output: compact, ready-to-use BAM file.
 
-7. **Quantification** – [`scripts/06_counts.sh`](scripts/06_counts.sh) *(to be implemented)*  
-   Generate a count matrix with `featureCounts` (or alternatively Salmon/Kallisto).
+7. **Quantification** – [`scripts/06_counts.sh`](scripts/06_counts.sh)  
+   Generate a count matrix with `featureCounts`. 
 
 8. **Differential expression** – [`notebooks/deseq2_analysis.Rmd`](notebooks/deseq2_analysis.Rmd) *(planned)*  
    Perform DE analysis in R: PCA, volcano plots, and DE gene identification with DESeq2.
@@ -83,7 +83,16 @@ Performed with **cutadapt**:
 
 ---
 
-## 🔮 Next steps
-- Generate gene count matrix with `featureCounts`  
+## 📌 Quantification results (featureCounts)
+
+- Input: `SRR35368398_GRCh38.sorted.bam`
+- Annotation: `Homo_sapiens.GRCh38.109.gtf`
+- Assigned reads: **25,927,919**
+- Multi-mapped reads: 12,066,540
+- No features: 25,319,765
+- Ambiguous: 4,643,885
+---
+
+## 🔮 Next steps 
 - Perform differential expression analysis in R (DESeq2)  
 - Visualize results (PCA, heatmaps, volcano plots)  
