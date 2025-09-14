@@ -1,30 +1,40 @@
 #!/bin/bash
 # =================================
 # 01_qc.sh
-# Quality control of raw FASTQ files
+# Quality control of FASTQ files
 # Tools: FastQC + MultiQC
 # =================================
 
-# Exit immediately on error, treat unset vars as error, fail on pipe errors
 set -euo pipefail
-
-# Record start time
 start_time=$(date +%s)
 
+# --------- INPUT ARGUMENT ---------
+# Default = data/fastq
+INPUT_DIR=${1:-"data/fastq"}
+
 # --------- SETTINGS ---------
-# Raw FASTQ folder
-RAW_DIR="data/fastq"
+OUT_DIR="results/fastqc/$(basename $INPUT_DIR)"
+MULTIQC_OUT="results/multiqc/$(basename $INPUT_DIR)"
+THREADS=4
+LOG="results/qc_$(basename $INPUT_DIR).log"
 
-# Output folders
-OUT_DIR="results/fastqc"
-MULTIQC_OUT="results/multiqc"
-
-# Create directories if not exist
 mkdir -p $OUT_DIR $MULTIQC_OUT
 
+# --------- LOGGING ---------
+exec > >(tee -i $LOG)
+exec 2>&1
+
+# --------- CHECK INPUT ---------
+if compgen -G "$INPUT_DIR/*.f*q.gz" > /dev/null; then
+    echo "FASTQ files found in $INPUT_DIR"
+else
+    echo "No FASTQ files found in $INPUT_DIR" >&2
+    exit 1
+fi
+
 # --------- RUN FASTQC ---------
-# echo ">>> Running FastQC..."
-# fastqc -t 4 -o $OUT_DIR $RAW_DIR/*.fastq.gz
+echo ">>> Running FastQC..."
+fastqc -t $THREADS -o $OUT_DIR $INPUT_DIR/*.f*q.gz
 
 # --------- RUN MULTIQC ---------
 echo ">>> Summarizing with MultiQC..."
@@ -34,6 +44,9 @@ multiqc $OUT_DIR -o $MULTIQC_OUT
 end_time=$(date +%s)
 runtime=$((end_time - start_time))
 
-
-echo "QC completed. Reports in $OUT_DIR and $MULTIQC_OUT"
+echo "================================="
+echo "QC completed for $INPUT_DIR"
+echo "FastQC reports: $OUT_DIR"
+echo "MultiQC report: $MULTIQC_OUT"
 echo "Total runtime: ${runtime} seconds"
+echo "================================="
