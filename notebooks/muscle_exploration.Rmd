@@ -1,0 +1,17 @@
+---
+title: "Muscle RNA-seq Exploratory Analysis"
+author: "Kristina"
+output: html_document
+---
+
+# Introduction
+
+This notebook explores gene expression in **human skeletal muscle** sample  
+(SRA: `SRR35368398`), using counts obtained from `featureCounts`.
+
+---
+
+# Load libraries
+
+```{r}
+library(tidyverse)
