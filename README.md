@@ -36,6 +36,13 @@ The goal was to practice all key steps of RNA-seq analysis and explore the expre
 
 7. **Quantification** – [`scripts/06_counts.sh`](scripts/06_counts.sh)  
    Generate a count matrix with `featureCounts`. **~25.9M** reads assigned to genes.
+
+8. **Exploratory analysis (R)** – [`notebooks/muscle_exploration.R`](notebooks/muscle_exploration.R)  
+   - Imported count matrix into R.  
+   - Generated summary plots:  
+     - **Expression distribution histogram** (log-scale).  
+     - **Top 20 expressed genes barplot**.  
+   - Verified that the most highly expressed genes are structural and contractile proteins specific to skeletal muscle (*TTN, NEB, ACTA1, MYH7, TNNT1, ACTN2, MYLPF*).  
 ---
 
 ## 📊 Results
